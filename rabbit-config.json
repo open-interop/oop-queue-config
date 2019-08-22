@@ -1,0 +1,110 @@
+{
+    "queues":
+    [
+        {
+            "name":"oop.unrouted",
+            "vhost":"/",
+            "durable":true,
+            "auto_delete":false,
+            "arguments": {}
+        },
+        {
+            "name":"oop.hasauth.raw_messages",
+            "vhost":"/",
+            "durable":true,
+            "auto_delete":false,
+            "arguments": {}
+        },
+        {
+            "name":"oop.noauth.raw_messages",
+            "vhost":"/",
+            "durable":true,
+            "auto_delete":false,
+            "arguments": {}
+        },
+        {
+            "name":"oop.endpoints.test",
+            "vhost":"/",
+            "durable":true,
+            "auto_delete":false,
+            "arguments": {}
+        },
+        {
+            "name":"oop.hasauth.messages",
+            "vhost":"/",
+            "durable":true,
+            "auto_delete":false,
+            "arguments": {}
+        }
+    ],
+    "exchanges":
+    [
+        {
+            "name":"oop",
+            "vhost":"/",
+            "type":"topic",
+            "durable":true,
+            "auto_delete":false,
+            "internal":false,
+            "arguments": {}
+        },
+        {
+            "name":"oop.endpoints",
+            "vhost":"/",
+            "type":"topic",
+            "durable":true,
+            "auto_delete":false,
+            "internal":false,
+            "arguments":
+            {
+                "alternate-exchange":"oop.unrouted"
+            }
+        },
+        {
+            "name":"oop.core.devices",
+            "vhost":"/",
+            "type":"fanout",
+            "durable":true,
+            "auto_delete":false,
+            "internal":false,
+            "arguments": {}
+        },
+        {
+            "name":"oop.unrouted",
+            "vhost":"/",
+            "type":"fanout",
+            "durable":true,
+            "auto_delete":false,
+            "internal":false,
+            "arguments": {}
+        }
+    ],
+    "bindings":
+    [
+        {
+            "source":"oop",
+            "vhost":"/",
+            "destination":"oop.hasauth.messages",
+            "destination_type":"queue",
+            "routing_key":"oop.hasauth.messages",
+            "arguments": {}
+        },
+        {
+            "source":"oop",
+            "vhost":"/",
+            "destination":"oop.hasauth.raw_messages",
+            "destination_type":"queue",
+            "routing_key":"oop.hasauth.raw_messages",
+            "arguments": {}
+        },
+        {
+            "source":"oop",
+            "vhost":"/",
+            "destination":"oop.noauth.raw_messages",
+            "destination_type":"queue",
+            "routing_key":"oop.noauth.raw_messages",
+            "arguments": {}
+        }
+    ]
+}
+
