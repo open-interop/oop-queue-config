@@ -2,6 +2,12 @@
 
 This is the RabbitMQ configuration for Open Interop.
 
+## Installation
+
+The Open Interop microservices depend on RabbitMQ. Installtion instructions can be found [here](https://www.rabbitmq.com/download.html).
+
+Once RabbitMQ is installed, you can apply the configuration by running `sudo rabbitmqadmin import rabbit-config.json`.
+
 ## Rabbit Configuration
 
 Most messages are be published to the `oop` exchange. Rendered temprs are published to the `oop.endpoints` exchange, which then routes messages to the `oop.endpoints.*` queues. Errors are published to `oop.errors`.
