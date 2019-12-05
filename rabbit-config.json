@@ -155,7 +155,7 @@
             "vhost":"/",
             "destination":"oop.core.transmissions",
             "destination_type":"queue",
-            "routing_key":"oop.hasauth.transmissions",
+            "routing_key":"oop.core.transmissions",
             "arguments": {}
         },
         {
